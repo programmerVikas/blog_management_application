@@ -1,0 +1,32 @@
+.navbar-toggler{
+    border: none;
+    outline: none;
+}
+
+
+.active1{
+    
+    border-radius: 5%;
+    color: azure;
+    font-weight: 500;
+    background-color: rgb(0, 235, 145);
+}
+
+.active2 {
+    border-bottom: 4px solid rgb(53, 5, 141);
+    font-weight: 500;
+}
+.active3 {
+   background-color: rgb(235, 204, 118);
+}
+
+
+.category{
+    overflow: auto;
+}
+
+.category .category_item{
+    color: white;
+    font-size: medium;
+    margin-left: 30px;
+}

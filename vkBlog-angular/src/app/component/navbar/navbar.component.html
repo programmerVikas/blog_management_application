@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="logo text-center p-3 ">
+        <h2><span style="font-family: 'Tangerine', cursive; ">INDIA</span><br><span
+                style="font-family: 'Holtwood One SC', serif;">TODAY</span></h2>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler mr-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"
+                style="align-items: center; justify-content: center;">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active1" aria-current="page"  routerLink="/">Home</a>
+                    </li>
+                    <span *ngFor="let item of categoryDatas; let i = index">
+                        <span *ngIf="i < 5">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" routerLinkActive="active2" [routerLinkActiveOptions]="{exact:true}"
+                                    routerLink="listOfPost/{{categoryDatas[i].id}}/{{categoryDatas[i].category}}">{{categoryDatas[i].category}}</a>
+                            </li>
+                        </span>
+                    </span>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li *ngFor="let item of categoryDatas"><a class="dropdown-item"
+                                    routerLinkActive="active3" [routerLinkActiveOptions]="{exact:true}" routerLink="/listOfPost/{{item.id}}/{{item.category}}">{{item.category}}</a>
+                                    <hr class="dropdown-divider">
+                                </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="row ">
+    <div class="col-sm-8 bg-light">
+        <div class="box mt-2">
+            <div class="card-header mx-2" style="border: none;">
+                <h5 class=""><i class="fa fa-rss" aria-hidden="true" style='color: rgb(95, 77, 77);'></i>&nbsp; {{title}} :-</h5>
+            </div>           
+            <div class="card-body">
+                <div [hidden]="spinner"><mat-spinner class="spinner" diameter="30"></mat-spinner>
+                </div>
+                <ul class="list-group list-group-flush" *ngFor="let item of listOfBlog.slice().reverse() | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <li class="list-group-item" *ngIf="item.category.id == id">
+                        <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i><a routerLink="/openBlogPage/{{item.id}}"> &nbsp; {{item.title}}</a></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer" style="border: none;">
+                <div class="text-right ">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">     
+    </div>
+</div>

@@ -1,0 +1,33 @@
+
+<div class="box">
+
+    <div class="row">
+
+        <div class="col-sm-8 bg-light oms" style="overflow-x: auto;">
+            <h2 class="py-2 font-weight-bold"> {{blogData.title}} </h2>
+            <nav class="breadcrumb">
+                <small><b>Published On : </b>{{blogData.date}}</small>
+            </nav>
+            <span class="spanImg2" [innerHtml]="blogData.content"></span>
+        </div>
+        <div class="col-sm-4">
+            <div class="box mt-2">
+                <ul class="list-group list-group-flush"
+                    *ngFor="let item of listOfBlog.slice().reverse()  | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <li class="list-group-item">
+                        <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i><span class=""
+                                (click)="redirectTo(item.id)"> &nbsp; {{item.title}}</span></p>
+                    </li>
+                </ul>
+
+                <!-- pagination section is starting... -->
+                <div class="card-footer" style="border: none;">
+                    <div class="text-right ">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,61 @@
+.btn-lg {
+    color: #fff;
+    border-radius: 35px;
+}
+
+.newBlog {
+    /* background-image: url('https://images.pexels.com/photos/1445416/pexels-photo-1445416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    /* background-size: 100% 130%; */
+    /* background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.5s; */
+}
+
+.newpostsm {
+   text-align: center;
+}
+
+
+.btn-huge {
+    width: 50%;
+    padding-top:15px;
+    padding-bottom:15px;
+    box-shadow: 4px 4px 10px 2px rgb(165, 143, 143);
+
+    
+}
+
+.newBlog:hover {
+    opacity: 0.9;
+    background-size: 100% 140%;
+}
+
+ul li p a{
+    color: #bd2130;
+    text-decoration: none;
+    font-weight: 410;
+}
+ul li p a:hover{
+    color: #6c41a3;
+    text-decoration: none;
+}
+
+ul li .title{
+    float: left;
+}
+
+/* .operations{
+    float: left;
+} */
+
+.operations p{
+    float: right;
+}
+table tr .hand-sign{
+    width: 5% !important;
+    vertical-align: auto;
+}
+table tr .operation{
+    width: 20% !important;
+    vertical-align: bottom;
+}

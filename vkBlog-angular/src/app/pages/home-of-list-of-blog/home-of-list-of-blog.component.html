@@ -1,0 +1,77 @@
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <mat-spinner class="spinner" diameter="50"></mat-spinner>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                    Close
+                </button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row ">
+    <div class="col-sm bg-light">
+        <div class="box mt-2">
+            <div class="card-header">
+                <h5 class=""><i class="fa fa-rss" aria-hidden="true" style='color: rgb(95, 77, 77);'></i>&nbsp; India
+                    News :-</h5>
+            </div>
+            <!-- <p><b>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus dicta ad consectetur quod?</b></p> -->
+            <ul class="list-group list-group-flush" *ngFor="let item of IndiaNews.slice().reverse(); let i = index">
+                <li class="list-group-item" *ngIf="i < 5">
+                    <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i>&nbsp; <a
+                            routerLink="openBlogPage/{{item.id}}">{{item.title}}</a> </p>
+                </li>
+            </ul>
+        </div>
+        <div class="box mt-2">
+            <div class="card-header">
+                <h5><i class="fa fa-rss" aria-hidden="true" style='color: rgb(95, 77, 77);'></i>&nbsp; Movie News :-
+                </h5>
+            </div>
+            <!-- <p><b>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus dicta ad consectetur quod?</b></p> -->
+            <ul class="list-group list-group-flush" *ngFor="let item of MovieNews.slice().reverse(); let i = index">
+                <li class="list-group-item" *ngIf="i < 5">
+                    <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i>&nbsp; <a
+                            routerLink="openBlogPage/{{item.id}}">{{item.title}}</a> </p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm bg-light">
+        <div class="box mt-2">
+            <div class="card-header">
+                <h5><i class="fa fa-rss" aria-hidden="true" style='color: rgb(95, 77, 77);'></i>&nbsp; Sports News :-
+                </h5>
+            </div>
+            <!-- <p><b>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus dicta ad consectetur quod?</b></p> -->
+            <ul class="list-group list-group-flush" *ngFor="let item of SportsNews.slice().reverse(); let i = index">
+                <li class="list-group-item" *ngIf="i < 5">
+                    <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i>&nbsp; <a
+                            routerLink="openBlogPage/{{item.id}}">{{item.title}}</a> </p>
+                </li>
+            </ul>
+        </div>
+        <div class="box mt-2">
+            <div class="card-header">
+                <h5><i class="fa fa-rss" aria-hidden="true" style='color: rgb(95, 77, 77);'></i>&nbsp; Trending News :-
+                </h5>
+            </div>
+
+            <ul class="list-group list-group-flush" *ngFor="let item of TrendingNews.slice().reverse(); let i = index">
+                <li class="list-group-item" *ngIf="i < 5">
+                    <p><i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i>&nbsp; <a
+                            routerLink="openBlogPage/{{item.id}}">{{item.title}}</a> </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmitData()">
+   
+    <div class="row">
+
+        <div class="col-sm-10">
+            <div class="card">
+
+                <div class="alert alert-warning alert-dismissible fade show" [hidden]="alertBox" role="alert">
+                    <strong>{{alertHead}}</strong>{{alertDesc}}
+                    <button type="button" (click)="closeAlert()" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="card-header">
+                    <input type="text" class="form-control titleBar" placeholder="Title" name="ids"
+                    formControlName="id" >
+                    
+                    <input type="text" class="form-control titleBar" placeholder="Title" name="titles"
+                        formControlName="title" required>
+                    <button class="btn-sm btn-success btnForm" style="cursor: pointer;">Post</button>
+                </div>
+                <div class="card-header">
+                    <div class="form-group col-sm-6">
+                        <label for="inputState">Select Category</label>
+                        <select id="inputState" #inputState class="form-control"
+                            (change)="categoryList(inputState.value)" name="category">
+                            <option>Select category</option>
+                            <option *ngFor="let item of categoryData" value="{{item.id}}">{{item.category}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <ckeditor name="content" formControlName="content"></ckeditor>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>

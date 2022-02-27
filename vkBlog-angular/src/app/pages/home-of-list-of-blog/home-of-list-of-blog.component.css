@@ -1,0 +1,28 @@
+.spinner {
+    margin: 0 auto;
+}
+
+.modal{
+    background-color: rgb(0, 0, 0);
+    opacity:0.7 !important;
+}
+
+.modal-content{
+   background: none;
+   border: none;
+}
+
+ul li p a {
+    color: #bd2130;
+    text-decoration: none;
+    font-weight: 410;
+}
+
+ul li p a:hover {
+    color: #6c41a3;
+    text-decoration: none;
+}
+
+.card-header h5 {
+    color: #e1875c;
+}

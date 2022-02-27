@@ -1,0 +1,185 @@
+<!-- modal is starting------------------------------------------- -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <!-- closing pop-up button -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- it will submit at the same function where category data was saving  -->
+                <form #myForms="ngForm" (ngSubmit)="submitData(myForms)">
+                    <div class="form-group">
+                        <input type="hidden" [value]="cEditId" name="id" [(ngModel)]="cEditId">
+                        <label for="exampleInputEmail1">Category name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" required #cName="ngModel"
+                            placeholder="Sports / Fitness / Technology" name="category" [value]="cEditCategory"
+                            [(ngModel)]="cEditCategory">
+                        <span *ngIf="cName.invalid && (cName.dirty || cName.touched)"
+                            class="error text-warning">&#x2613; please fill this field correctly..</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="cDescription"
+                            placeholder="Write something about this category(Optional)..."
+                            [(ngModel)]="cEditDescription">{{cEditDescription}}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+
+    <!-- category form is here******************************************************* -->
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-center">
+                    Create Your Category
+                </h4>
+            </div>
+            <div class="card-body">
+                <form #myForm="ngForm" (ngSubmit)="submitData(myForm)">
+
+                    <div>
+                        <label for="exampleInputEmail1">Category name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" required #cName="ngModel"
+                            placeholder="Sports / Fitness / Technology" name="category" value="cEditCategory" ngModel>
+                        <span *ngIf="cName.invalid && (cName.dirty || cName.touched)"
+                            class="error text-warning">&#x2613; please fill this field correctly..</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="cDescription"
+                            placeholder="Write something about this category(Optional)..."
+                            ngModel>{{cEditDescription}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-100" [disabled]="myForm.invalid">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- going to write new post ************************************** -->
+    <div class="col-sm newpostsm">
+
+        <button routerLink="/newPost" class="btn  btn-lg  btn-huge btn-primary my-5 "  routerLink="/newPost">            
+            <span class="btntext"><i class="fa fa-plus"
+                    aria-hidden="true" style="font-size: x-large; color:rgb(255, 255, 255)"></i> &nbsp; New Post
+                </span>
+                </button>
+
+        <!-- <a  routerLink="/newPost">            
+            <div class="card newBlog my-5">
+                <div class="card-body text-center my-5">
+                    <i class="fa fa-plus"
+                    aria-hidden="true" style="font-size: x-large; color:rgb(255, 255, 255)"></i> &nbsp; New
+                Post
+                </div>
+            </div>
+        </a> -->
+    </div>
+</div>
+
+<br>
+<hr>
+
+<div class="row mt-5">
+    <div class="col-sm-8 bg-light">
+        <div class="box mt-2">
+            <div class="card-header" style="border: none;">
+                <h5 class="text-danger"><i class="fa fa-rss" aria-hidden="true"></i>&nbsp; Latest Post :-</h5>
+            </div>
+            <ul class="list-group list-group-flush my-2"
+                *ngFor="let item of blogData.slice().reverse() | paginate: {id: 'pagination1', itemsPerPage: 7, currentPage: p }">
+                <li class="list-group-item table-responsive">
+
+
+                    <table class="" style="width: 100%;">
+                        <tr>
+                            <td class="hand-sign">
+                                <i class="fa fa-hand-o-right" aria-hidden="true" style="font-size: large;"></i>
+                            </td>
+                            <td style="text-align: left;">
+                                <p class="title"><a routerLink="/openBlogPage/{{item.id}}">
+                                        {{item.title}} </a></p>
+
+                            </td>
+                            <td class="operation">
+                                <div class="operations form-group float-right">
+                                    <button (click)="deleteById(item.id)" title="Delete" class="btn"><i
+                                            class="text-danger fa fa-trash" aria-hidden="true"></i></button>
+                                    &nbsp;&nbsp;
+                                    <button title="Edit" routerLink="/updatePost/{{item.id}}" class="btn"><i
+                                            class="text-primary fa fa-pencil" aria-hidden="true"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </li>
+            </ul>
+            <div class="card-footer">
+                <div class="text-right">
+                    <pagination-controls id="pagination1" (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 bg-light">
+        <div class="box mt-2">
+            <div class="card-header">
+                <div class="card-item">
+                    <h5 class="text-danger">
+                        Category List :)
+                    </h5>
+                </div>
+            </div>
+            <ul class="list-group list-group-flush my-2"
+                *ngFor="let item of categoryData.slice().reverse() | paginate: {id: 'pagination2', itemsPerPage: 7, currentPage: q }">
+                <li class="list-group-item ">
+                    <div class="table-responsive">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="text-align: left;">
+                                    <p class="title"><a>
+                                            {{item.category}} </a></p>
+                                </td>
+                                <td class="">
+                                    <div class="operations form-group float-right">
+                                        <button (click)="deleteCategoryById(item.id)" title="Delete" class="btn"><i
+                                                class="text-danger fa fa-trash" aria-hidden="true"></i></button>
+                                        <button title="Edit" class="btn ml-3" data-toggle="modal"
+                                            data-target="#exampleModal" data-whatever="@getbootstrap"
+                                            (click)="submiteditData(item.id,item.category,item.cDescription)"><i
+                                                class="text-primary fa fa-pencil" aria-hidden="true"></i></button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </li>
+            </ul>
+            <div class="card-footer">
+                <div class="text-right">
+                    <pagination-controls id="pagination2" (pageChange)="q = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
